@@ -268,7 +268,7 @@ jobs:
         set -x
         pushd "${GITHUB_WORKSPACE}"
         mkdir -p catalog
-        opm generate dockerfile ./catalog -i registry.redhat.io/openshift4/ose-operator-registry-rhel9:v4.18
+        opm generate dockerfile ./catalog -b registry.redhat.io/openshift4/ose-operator-registry-rhel9:v4.18 -i registry.redhat.io/openshift4/ose-operator-registry-rhel9:v4.18
         opm init ${OPERATOR_NAME} --default-channel=alpha --output yaml > catalog/index.yaml
         opm render "${REGISTRY}/${BUNDLE_IMAGE}:${GITHUB_SHA}" --output yaml >> catalog/index.yaml
         cat >> catalog/index.yaml << EOF_CAT
